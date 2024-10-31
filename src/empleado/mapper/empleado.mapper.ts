@@ -20,4 +20,9 @@ export class EmpleadoMapper {
     dto.email = entity.emailUsuario;
     return dto;
   }
+
+  static entityListToDtoList(entityList: Empleado[]): GetEmpleadoDto[] {
+    return entityList.map((entity) => EmpleadoMapper.entityToDto(entity));
+  }
+
 }

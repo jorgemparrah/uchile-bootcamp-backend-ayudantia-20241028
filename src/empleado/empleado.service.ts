@@ -2,7 +2,7 @@ import { Injectable, NotFoundException, UnauthorizedException } from '@nestjs/co
 import { InjectRepository } from '@nestjs/typeorm';
 import { Empleado } from 'src/orm/entity/empleado.entity';
 import { Usuario } from 'src/orm/entity/usuario.entity';
-import { Repository } from 'typeorm';
+import { Like, Repository } from 'typeorm';
 import { CreateEmpleadoDto } from './dto/create-empleado.dto';
 import { UsuarioMapper } from './mapper/usuario.mapper';
 import { GetEmpleadoDto } from './dto/get-empleado.dto';
@@ -39,10 +39,25 @@ export class EmpleadoService {
     }
     throw new UnauthorizedException('Usuario y/o contraseña incorrectos');
   }
-  /*
-  findAll() {
-    return `This action returns all empleado`;
+
+  async findAll(rut : string, nombre: string): Promise<GetEmpleadoDto[]> {
+    const valoresWhere = {};
+
+    if (rut && rut.length > 0) {
+      valoresWhere["rut"] = Like(rut + "%");
+    }
+
+    if (nombre && nombre.length > 0) {
+      valoresWhere["nombre"] = Like("%" + nombre);
+    }
+
+    console.log(valoresWhere)
+    const empleados : Empleado[] = await this.empleadoRepository.find({
+      where: valoresWhere
+    });
+    return EmpleadoMapper.entityListToDtoList(empleados);
   }
+  /*
 
   findOne(id: number) {
     return `This action returns a #${id} empleado`;

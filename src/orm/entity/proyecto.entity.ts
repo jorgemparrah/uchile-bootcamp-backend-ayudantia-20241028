@@ -13,7 +13,7 @@ export class Proyecto {
   @Column({ name: 'fecha_inicio' })
   fechaInicio: Date;
 
-  @Column({ name: 'fecha_termino' })
+  @Column({ name: 'fecha_fin' })
   fechaTermino: Date;
 
   @OneToMany(() => Tarea, t => t.proyecto)

@@ -1,4 +1,3 @@
-USE tareas;
 INSERT INTO usuario (email, clave) VALUES
 ('juan.perez@email.com', 'clave123'), ('ana.gomez@email.com', 'password456'), ('maria.lopez@email.com', 'qwerty789'), ('pedro.sanchez@email.com', 'abc123'), ('lucia.morales@email.com', 'clave456'), ('carlos.rojas@email.com', 'password789'), ('sofia.martinez@email.com', 'clave999'), ('diego.garcia@email.com', 'mypassword'), ('laura.torres@email.com', 'test123'), ('andres.vargas@email.com', 'test456');
 

@@ -1,5 +1,3 @@
-CREATE DATABASE tareas;
-USE tareas;
 CREATE TABLE `usuario` ( `email` VARCHAR(50) PRIMARY KEY, `clave` VARCHAR(50));
 
 CREATE TABLE `empleado` ( `rut` VARCHAR(12) PRIMARY KEY, `nombre` VARCHAR(100), `email_usuario` VARCHAR(50) UNIQUE);
